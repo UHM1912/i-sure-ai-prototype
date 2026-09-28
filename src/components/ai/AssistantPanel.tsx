@@ -86,31 +86,31 @@ export function AssistantPanel() {
       <button
         onClick={() => setOpen(true)}
         data-action="ask-ai"
-        className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-panel transition-transform hover:-translate-y-0.5"
+        className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-panel transition-opacity hover:opacity-90"
       >
         <Sparkles className="size-4" />
-        Ask AI
+        Ask i-Sure AI
       </button>
     );
   }
 
   return (
-    <aside className="fixed bottom-4 right-4 z-40 flex h-[min(640px,88vh)] w-[min(420px,calc(100vw-2rem))] flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-panel">
+    <aside className="fixed inset-y-0 right-0 z-40 flex w-[min(400px,100vw)] flex-col border-l border-border bg-card shadow-panel">
       <header className="flex items-start justify-between border-b border-border px-4 py-3">
         <div className="flex gap-3">
-          <div className="grid size-9 place-items-center rounded-xl bg-primary-soft text-primary">
-            <Bot className="size-5" />
+          <div className="grid size-8 place-items-center rounded-md bg-primary-soft text-primary">
+            <Bot className="size-4" />
           </div>
           <div>
             <p className="flex items-center gap-2 text-sm font-semibold">
-              AI Assistant
+              i-Sure AI
               <span className="inline-flex items-center gap-1 text-xs font-normal text-success">
                 <span className="size-1.5 rounded-full bg-success" />
                 {status === "ready" ? "Ready" : "Active"}
               </span>
             </p>
             <p className="text-xs text-muted-foreground">
-              How can I help you with the insurance application?
+              How can I help you?
             </p>
           </div>
         </div>
@@ -133,7 +133,7 @@ export function AssistantPanel() {
               <button
                 key={s}
                 onClick={() => submit(s)}
-                className="block w-full rounded-lg border border-border bg-background px-3 py-2 text-left text-sm transition-colors hover:border-primary/40 hover:bg-primary-soft"
+                className="block w-full rounded-md border border-border bg-background px-3 py-2 text-left text-sm transition-colors hover:border-primary/40 hover:bg-primary-soft"
               >
                 {s}
               </button>
@@ -148,9 +148,9 @@ export function AssistantPanel() {
           >
             <div
               className={cn(
-                "max-w-[85%] rounded-2xl px-3 py-2 text-sm",
+                "max-w-[85%] rounded-md px-3 py-2 text-sm",
                 m.role === "user"
-                  ? "bg-primary text-primary-foreground"
+                  ? "bg-primary-soft text-foreground"
                   : m.error
                     ? "border border-destructive/30 bg-destructive/5 text-foreground"
                     : "border border-border bg-background",
@@ -181,7 +181,7 @@ export function AssistantPanel() {
         ))}
 
         {steps.length > 0 && (
-          <div className="rounded-xl border border-border bg-background p-3">
+          <div className="rounded-md border border-border bg-background p-3">
             <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
               AI Action
             </p>
@@ -191,18 +191,22 @@ export function AssistantPanel() {
               ))}
             </div>
             {lastIntent && (
-              <div className="mt-3 grid grid-cols-2 gap-1 border-t border-border pt-2 font-mono text-[11px] text-muted-foreground">
-                <span>intent: {lastIntent.intent}</span>
-                <span>module: {lastIntent.module}</span>
-                <span>target: {lastIntent.target}</span>
-                <span>conf: {lastIntent.confidence}</span>
-              </div>
+              <details className="mt-3 border-t border-border pt-2 text-[11px] text-muted-foreground">
+                <summary className="cursor-pointer select-none text-xs text-primary">View AI reasoning</summary>
+                <div className="mt-2 grid grid-cols-2 gap-1 font-mono">
+                  <span>intent: {lastIntent.intent}</span>
+                  <span>module: {lastIntent.module}</span>
+                  <span>target: {lastIntent.target}</span>
+                  <span>conf: {lastIntent.confidence}</span>
+                  <span className="col-span-2">selector: [data-action="{lastIntent.target.toLowerCase().replace(/_/g, "-")}"]</span>
+                </div>
+              </details>
             )}
           </div>
         )}
 
         {listening && (
-          <div className="flex items-center gap-3 rounded-xl border border-primary/30 bg-primary-soft px-3 py-3">
+          <div className="flex items-center gap-3 rounded-md border border-border bg-background px-3 py-2.5">
             <Mic className="size-4 text-primary" />
             <span className="text-sm font-medium text-primary">Listening…</span>
             <Waveform />
@@ -249,7 +253,7 @@ export function AssistantPanel() {
         <button
           type="button"
           onClick={() => simulateVoice()}
-          className="grid size-9 shrink-0 place-items-center rounded-lg border border-border text-muted-foreground transition-colors hover:bg-muted"
+          className="grid size-9 shrink-0 place-items-center rounded-md border border-border text-muted-foreground transition-colors hover:bg-muted"
           aria-label="Voice input"
         >
           <Mic className="size-4" />
@@ -257,12 +261,12 @@ export function AssistantPanel() {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Tell the AI what you want to do…"
-          className="h-9 flex-1 rounded-lg border border-border bg-background px-3 text-sm outline-none focus:border-primary/50 focus:ring-2 focus:ring-ring/20"
+          placeholder="Tell AI what you want…"
+          className="h-9 flex-1 rounded-md border border-border bg-background px-3 text-sm outline-none focus:border-primary/50 focus:ring-2 focus:ring-ring/20"
         />
         <button
           type="submit"
-          className="grid size-9 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground transition-opacity hover:opacity-90"
+          className="grid size-9 shrink-0 place-items-center rounded-md bg-primary text-primary-foreground transition-opacity hover:opacity-90"
           aria-label="Send"
         >
           <Send className="size-4" />
