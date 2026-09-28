@@ -80,13 +80,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Aegis Insure · AI Operations Platform" },
+      { title: "i-Sure · Insurance Management Platform" },
       {
         name: "description",
         content:
           "Enterprise insurance operations workspace with an AI assistant that navigates, guides and automates the application.",
       },
-      { property: "og:title", content: "Aegis Insure · AI Operations Platform" },
+      { property: "og:title", content: "i-Sure · Insurance Management Platform" },
       {
         property: "og:description",
         content: "AI-powered insurance operations prototype with guided navigation and automation.",

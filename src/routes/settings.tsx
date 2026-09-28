@@ -5,9 +5,9 @@ import { Switch } from "@/components/ui/switch";
 export const Route = createFileRoute("/settings")({
   head: () => ({
     meta: [
-      { title: "Settings · Aegis Insure" },
+      { title: "Settings · i-Sure" },
       { name: "description", content: "Control how the AI layer behaves: confirmations for critical actions, voice replies and vision fallback." },
-      { property: "og:title", content: "Settings · Aegis Insure" },
+      { property: "og:title", content: "Settings · i-Sure" },
       { property: "og:description", content: "AI control and governance settings for the insurance workspace." },
     ],
   }),
@@ -26,7 +26,7 @@ function Settings() {
   return (
     <div className="mx-auto max-w-3xl">
       <PageHeader title="Settings" description="AI control, governance and workspace preferences." />
-      <div className="divide-y divide-border rounded-xl border border-border bg-card shadow-card">
+      <div className="divide-y divide-border rounded-lg border border-border bg-card shadow-card">
         {TOGGLES.map((t) => (
           <div key={t.label} className="flex items-center justify-between gap-6 px-5 py-4">
             <div>

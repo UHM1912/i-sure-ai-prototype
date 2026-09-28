@@ -14,42 +14,46 @@ export function DemoMenu() {
     <Popover>
       <PopoverTrigger asChild>
         <Button size="sm" data-action="demo-mode">
-          <Play className="size-3.5" /> Try AI Demo
+          Try AI Demo
         </Button>
       </PopoverTrigger>
-      <PopoverContent align="end" className="w-80">
-        <p className="text-sm font-semibold">Demo Scenario</p>
-        <p className="text-xs text-muted-foreground">
-          Run a predefined scenario to see the AI layer in action.
-        </p>
-        <div className="mt-3 grid grid-cols-2 gap-2">
-          {SCENARIOS.map((s) => (
-            <button
-              key={s.key}
-              onClick={() => setSelected(s.key)}
-              className={cn(
-                "rounded-lg border px-2.5 py-2 text-left text-xs transition-colors",
-                selected === s.key
-                  ? "border-primary bg-primary-soft text-accent-foreground"
-                  : "border-border hover:bg-muted",
-              )}
-            >
-              {s.label}
-            </button>
-          ))}
+      <PopoverContent align="end" className="w-80 p-0">
+        <div className="border-b border-border px-4 py-3">
+          <p className="text-sm font-semibold">AI Demo</p>
+          <p className="text-xs text-muted-foreground">Choose a scenario:</p>
         </div>
-        <p className="mt-3 rounded-lg bg-muted px-3 py-2 text-xs text-muted-foreground">
-          {active.description}
-          <span className="mt-1 block italic">“{active.prompt}”</span>
-        </p>
-        <Button
-          className="mt-3 w-full"
-          disabled={running !== null}
-          onClick={() => runScenario(selected)}
-        >
-          {running ? <Loader2 className="size-4 animate-spin" /> : <Play className="size-4" />}
-          {running ? "Running demo…" : "Run Demo"}
-        </Button>
+        <ol className="py-1">
+          {SCENARIOS.map((s, i) => (
+            <li key={s.key}>
+              <button
+                onClick={() => setSelected(s.key)}
+                className={cn(
+                  "flex w-full items-center gap-3 border-l-2 px-4 py-2 text-left text-sm transition-colors",
+                  selected === s.key
+                    ? "border-l-primary bg-primary-soft font-medium text-accent-foreground"
+                    : "border-l-transparent hover:bg-muted",
+                )}
+              >
+                <span className="w-4 text-xs text-muted-foreground">{i + 1}.</span>
+                {s.label}
+              </button>
+            </li>
+          ))}
+        </ol>
+        <div className="border-t border-border px-4 py-3">
+          <p className="text-xs text-muted-foreground">
+            {active.description} <span className="italic">“{active.prompt}”</span>
+          </p>
+          <Button
+            size="sm"
+            className="mt-3 w-full"
+            disabled={running !== null}
+            onClick={() => runScenario(selected)}
+          >
+            {running ? <Loader2 className="size-4 animate-spin" /> : <Play className="size-3.5" />}
+            {running ? "Running demo…" : "Run Demo"}
+          </Button>
+        </div>
       </PopoverContent>
     </Popover>
   );

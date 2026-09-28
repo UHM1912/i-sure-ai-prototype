@@ -6,9 +6,9 @@ import { investmentProducts, investmentTransactions, portfolioSeries } from "@/d
 export const Route = createFileRoute("/investments")({
   head: () => ({
     meta: [
-      { title: "Investments · Aegis Insure" },
+      { title: "Investments · i-Sure" },
       { name: "description", content: "Investment products, portfolio performance and recent customer transactions." },
-      { property: "og:title", content: "Investments · Aegis Insure" },
+      { property: "og:title", content: "Investments · i-Sure" },
       { property: "og:description", content: "Track fund NAVs, portfolio growth and investment transactions." },
     ],
   }),
@@ -21,7 +21,7 @@ function Investments() {
       <PageHeader title="Investments" description="Products, portfolio performance and transactions." />
 
       <div className="grid gap-6 lg:grid-cols-3">
-        <section className="rounded-xl border border-border bg-card p-5 shadow-card lg:col-span-2">
+        <section className="rounded-lg border border-border bg-card p-5 shadow-card lg:col-span-2">
           <h2 className="text-sm font-semibold">Portfolio performance</h2>
           <p className="text-xs text-muted-foreground">Assets under management (₹ hundred crore)</p>
           <div className="mt-4 h-64">
@@ -56,7 +56,7 @@ function Investments() {
           </div>
         </section>
 
-        <section className="rounded-xl border border-border bg-card p-5 shadow-card">
+        <section className="rounded-lg border border-border bg-card p-5 shadow-card">
           <h2 className="text-sm font-semibold">Investment products</h2>
           <ul className="mt-3 divide-y divide-border">
             {investmentProducts.map((p) => (
@@ -77,7 +77,7 @@ function Investments() {
         </section>
       </div>
 
-      <section className="mt-6 overflow-hidden rounded-xl border border-border bg-card shadow-card">
+      <section className="mt-6 overflow-hidden rounded-lg border border-border bg-card shadow-card">
         <h2 className="border-b border-border px-5 py-3 text-sm font-semibold">Recent transactions</h2>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[600px] text-sm">

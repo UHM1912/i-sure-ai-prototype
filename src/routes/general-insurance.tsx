@@ -6,9 +6,9 @@ import { generalCategories, mockPolicies } from "@/data/mock";
 export const Route = createFileRoute("/general-insurance")({
   head: () => ({
     meta: [
-      { title: "General Insurance · Aegis Insure" },
+      { title: "General Insurance · i-Sure" },
       { name: "description", content: "Motor, health, property and travel insurance portfolios with claims and policy counts." },
-      { property: "og:title", content: "General Insurance · Aegis Insure" },
+      { property: "og:title", content: "General Insurance · i-Sure" },
       { property: "og:description", content: "Manage motor, health, property and travel insurance portfolios." },
     ],
   }),
@@ -28,7 +28,7 @@ function GeneralInsurance() {
           return (
             <div
               key={c.name}
-              className="rounded-xl border border-border bg-card p-5 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-panel"
+              className="rounded-lg border border-border bg-card p-5 shadow-card transition-all hover:shadow-card"
             >
               <div className="grid size-9 place-items-center rounded-lg bg-primary-soft text-primary">
                 <Icon className="size-4" />
@@ -44,7 +44,7 @@ function GeneralInsurance() {
         })}
       </div>
 
-      <section className="mt-6 overflow-hidden rounded-xl border border-border bg-card shadow-card">
+      <section className="mt-6 overflow-hidden rounded-lg border border-border bg-card shadow-card">
         <h2 className="border-b border-border px-5 py-3 text-sm font-semibold">Recent general policies</h2>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[640px] text-sm">

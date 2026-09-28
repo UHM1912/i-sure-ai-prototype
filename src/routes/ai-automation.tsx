@@ -16,9 +16,9 @@ import { SCENARIOS, useAI } from "@/lib/ai-engine";
 export const Route = createFileRoute("/ai-automation")({
   head: () => ({
     meta: [
-      { title: "AI Automation · Aegis Insure" },
+      { title: "AI Automation · i-Sure" },
       { name: "description", content: "AI capability command centre: intent understanding, DOM navigation, vision fallback and simulated browser automation." },
-      { property: "og:title", content: "AI Automation · Aegis Insure" },
+      { property: "og:title", content: "AI Automation · i-Sure" },
       { property: "og:description", content: "See how the AI layer understands intent, finds elements and acts on the insurance application." },
     ],
   }),
@@ -59,7 +59,7 @@ function AIAutomation() {
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {CAPABILITIES.map((c) => (
-          <div key={c.name} className="rounded-xl border border-border bg-card p-5 shadow-card">
+          <div key={c.name} className="rounded-lg border border-border bg-card p-5 shadow-card">
             <div className="flex items-center justify-between">
               <div className="grid size-9 place-items-center rounded-lg bg-primary-soft text-primary">
                 <c.icon className="size-4" />
@@ -82,7 +82,7 @@ function AIAutomation() {
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-3">
-        <section className="rounded-xl border border-border bg-card p-5 shadow-card lg:col-span-2">
+        <section className="rounded-lg border border-border bg-card p-5 shadow-card lg:col-span-2">
           <h2 className="text-sm font-semibold">Automation flow</h2>
           <div className="mt-4 grid gap-2 sm:grid-cols-2">
             <div className="space-y-2">
@@ -114,7 +114,7 @@ function AIAutomation() {
         </section>
 
         <section className="space-y-4">
-          <div className="rounded-xl border border-border bg-card p-5 shadow-card">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-card">
             <h2 className="flex items-center gap-2 text-sm font-semibold">
               <ScanSearch className="size-4 text-primary" /> Element understanding
             </h2>
@@ -153,7 +153,7 @@ function AIAutomation() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-border bg-card p-5 shadow-card">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-card">
             <h2 className="text-sm font-semibold">Run a scenario</h2>
             <div className="mt-3 space-y-2">
               {SCENARIOS.map((s) => (
@@ -173,7 +173,7 @@ function AIAutomation() {
         </section>
       </div>
 
-      <section className="mt-6 rounded-xl border border-border bg-card p-5 shadow-card">
+      <section className="mt-6 rounded-lg border border-border bg-card p-5 shadow-card">
         <h2 className="text-sm font-semibold">AI Browser Control (simulated)</h2>
         <p className="text-xs text-muted-foreground">
           Playwright-style execution trace. No real browser automation runs in this prototype.

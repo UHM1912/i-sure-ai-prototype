@@ -15,13 +15,13 @@ import { useAI } from "@/lib/ai-engine";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Insurance Operations · Aegis Insure" },
+      { title: "Insurance Operations · i-Sure" },
       {
         name: "description",
         content:
           "Manage insurance data and workflows from one workspace, with an AI layer that navigates and automates the application.",
       },
-      { property: "og:title", content: "Insurance Operations · Aegis Insure" },
+      { property: "og:title", content: "Insurance Operations · i-Sure" },
       {
         property: "og:description",
         content: "Policies, customers and pending actions in one AI-assisted insurance workspace.",
@@ -32,10 +32,10 @@ export const Route = createFileRoute("/")({
 });
 
 const STATS = [
-  { label: "Policies", value: "12,480", delta: "+312 this month", icon: FileStack },
-  { label: "Customers", value: "8,932", delta: "+148 this month", icon: Users },
-  { label: "Pending Actions", value: "27", delta: "9 need review", icon: TriangleAlert },
-  { label: "Recent Imports", value: "14", delta: "Last: 12 min ago", icon: FileUp },
+  { label: "Total Clients", value: "8,932", delta: "+148 this month", icon: Users },
+  { label: "Active Policies", value: "12,480", delta: "+312 this month", icon: FileStack },
+  { label: "Renewals Due", value: "127", delta: "Next 30 days", icon: FileUp },
+  { label: "Pending Claims", value: "24", delta: "9 need review", icon: TriangleAlert },
 ];
 
 const INSIGHTS = [
@@ -50,8 +50,8 @@ function Dashboard() {
   return (
     <div className="mx-auto max-w-7xl">
       <PageHeader
-        title="Insurance Operations"
-        description="Manage insurance data and workflows from one workspace."
+        title="Dashboard"
+        description="Overview of your clients, policies, renewals and claims."
         actions={
           <Button variant="outline" data-action="ask-ai-dashboard" onClick={() => submit("Show me what I need to do next")}>
             <Sparkles className="size-4" /> Ask AI what's next
@@ -63,20 +63,20 @@ function Dashboard() {
         {STATS.map((s) => (
           <div
             key={s.label}
-            className="rounded-xl border border-border bg-card p-5 shadow-card transition-shadow hover:shadow-panel"
+            className="rounded-lg border border-border bg-card p-5 shadow-card transition-shadow hover:shadow-card"
           >
             <div className="flex items-center justify-between">
               <p className="text-sm text-muted-foreground">{s.label}</p>
               <s.icon className="size-4 text-primary" />
             </div>
-            <p className="mt-3 text-3xl font-semibold tracking-tight">{s.value}</p>
+            <p className="mt-3 text-2xl font-semibold">{s.value}</p>
             <p className="mt-1 text-xs text-muted-foreground">{s.delta}</p>
           </div>
         ))}
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-3">
-        <section className="rounded-xl border border-border bg-card p-5 shadow-card lg:col-span-2">
+        <section className="rounded-lg border border-border bg-card p-5 shadow-card lg:col-span-2">
           <h2 className="text-sm font-semibold">Recent Activity</h2>
           <ul className="mt-4 divide-y divide-border">
             {recentActivity.map((a) => (
@@ -91,7 +91,7 @@ function Dashboard() {
           </ul>
         </section>
 
-        <section className="rounded-xl border border-primary/25 bg-primary-soft p-5">
+        <section className="rounded-lg border border-border bg-card p-5 shadow-card">
           <div className="flex items-center gap-2 text-primary">
             <Sparkles className="size-4" />
             <h2 className="text-sm font-semibold">AI Insights</h2>
@@ -123,7 +123,7 @@ function Dashboard() {
           <Link
             key={c.to}
             to={c.to}
-            className="group rounded-xl border border-border bg-card p-5 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-panel"
+            className="group rounded-lg border border-border bg-card p-5 shadow-card transition-all hover:shadow-card"
           >
             <p className="flex items-center justify-between text-sm font-semibold">
               {c.title}
