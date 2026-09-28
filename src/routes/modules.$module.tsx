@@ -47,8 +47,8 @@ function ModulePage() {
           </thead>
           <tbody className="divide-y divide-border">
             {mockPolicies.slice(0, 8).map((p, i) => (
-              <tr key={p.policyNumber} className="hover:bg-muted/50">
-                <td className="px-4 py-2 font-medium">{p.policyNumber}</td>
+              <tr key={p.id} className="hover:bg-muted/50">
+                <td className="px-4 py-2 font-medium">{p.id}</td>
                 <td className="px-4 py-2">{p.customer}</td>
                 <td className="px-4 py-2 text-muted-foreground">{EXTRA[i % EXTRA.length]}</td>
                 <td className="px-4 py-2">{p.status}</td>

@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpDown, Pencil, Search, Trash2 } from "lucide-react";
 import { PageHeader } from "@/components/common/PageHeader";
+import { LifeTabs } from "@/components/common/LifeTabs";
 import { Button } from "@/components/ui/button";
 import { mockPolicies } from "@/data/mock";
 import { cn } from "@/lib/utils";
@@ -50,6 +51,7 @@ function ManageData() {
   return (
     <div className="mx-auto max-w-6xl">
       <PageHeader title="Manage Data" description="Search and maintain existing life insurance policy records." />
+      <LifeTabs />
 
       <div className="mb-4 flex flex-wrap items-center gap-2" data-action="manage-data">
         <div className="flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2">

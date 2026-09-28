@@ -36,7 +36,7 @@ const AI_NAV = [
 ] as const;
 
 const TITLES: Record<string, string> = {
-  "/": "Home",
+  "/": "Dashboard",
   "/life-insurance": "Life Insurance",
   "/life-insurance/import": "Life Insurance · Import Data",
   "/life-insurance/manage": "Life Insurance · Manage Data",

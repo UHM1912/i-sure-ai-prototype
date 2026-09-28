@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CheckCircle2, Loader2, UploadCloud } from "lucide-react";
 import { toast } from "sonner";
 import { PageHeader } from "@/components/common/PageHeader";
+import { LifeTabs } from "@/components/common/LifeTabs";
 import { Button } from "@/components/ui/button";
 import { recentImports } from "@/data/mock";
 import { cn } from "@/lib/utils";
@@ -41,7 +42,8 @@ function ImportData() {
         description="Bring policy and customer files into the Life Insurance module."
         actions={
           <Button data-action="import-data" onClick={run}>
-            <UploadCloud className="size-4" /> Import Data
+            <UploadCloud className="size-4" />
+      <LifeTabs /> Import Data
           </Button>
         }
       />

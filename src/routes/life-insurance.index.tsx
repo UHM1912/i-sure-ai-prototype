@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Database, FilePlus2, Upload } from "lucide-react";
 import { PageHeader } from "@/components/common/PageHeader";
+import { LifeTabs } from "@/components/common/LifeTabs";
 
 export const Route = createFileRoute("/life-insurance/")({
   head: () => ({
@@ -27,6 +28,7 @@ function LifeInsurance() {
         title="Life Insurance"
         description="Manage life insurance data and policy operations."
       />
+      <LifeTabs />
       <div className="grid gap-4 md:grid-cols-3">
         {ACTIONS.map((a) => (
           <Link

@@ -20,6 +20,7 @@ import { Route as LifeInsuranceIndexRouteImport } from './routes/life-insurance.
 import { Route as LifeInsuranceImportRouteImport } from './routes/life-insurance.import'
 import { Route as LifeInsuranceManageRouteImport } from './routes/life-insurance.manage'
 import { Route as LifeInsuranceNewRouteImport } from './routes/life-insurance.new'
+import { Route as ModulesModuleRouteImport } from './routes/modules.$module'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -76,6 +77,11 @@ const LifeInsuranceNewRoute = LifeInsuranceNewRouteImport.update({
   path: '/life-insurance/new',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ModulesModuleRoute = ModulesModuleRouteImport.update({
+  id: '/modules/$module',
+  path: '/modules/$module',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/life-insurance/import': typeof LifeInsuranceImportRoute
   '/life-insurance/manage': typeof LifeInsuranceManageRoute
   '/life-insurance/new': typeof LifeInsuranceNewRoute
+  '/modules/$module': typeof ModulesModuleRoute
   '/life-insurance/': typeof LifeInsuranceIndexRoute
 }
 export interface FileRoutesByTo {
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/life-insurance/import': typeof LifeInsuranceImportRoute
   '/life-insurance/manage': typeof LifeInsuranceManageRoute
   '/life-insurance/new': typeof LifeInsuranceNewRoute
+  '/modules/$module': typeof ModulesModuleRoute
   '/life-insurance': typeof LifeInsuranceIndexRoute
 }
 export interface FileRoutesById {
@@ -115,6 +123,7 @@ export interface FileRoutesById {
   '/life-insurance/import': typeof LifeInsuranceImportRoute
   '/life-insurance/manage': typeof LifeInsuranceManageRoute
   '/life-insurance/new': typeof LifeInsuranceNewRoute
+  '/modules/$module': typeof ModulesModuleRoute
   '/life-insurance/': typeof LifeInsuranceIndexRoute
 }
 export interface FileRouteTypes {
@@ -130,6 +139,7 @@ export interface FileRouteTypes {
     | '/life-insurance/import'
     | '/life-insurance/manage'
     | '/life-insurance/new'
+    | '/modules/$module'
     | '/life-insurance/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -143,6 +153,7 @@ export interface FileRouteTypes {
     | '/life-insurance/import'
     | '/life-insurance/manage'
     | '/life-insurance/new'
+    | '/modules/$module'
     | '/life-insurance'
   id:
     | '__root__'
@@ -156,6 +167,7 @@ export interface FileRouteTypes {
     | '/life-insurance/import'
     | '/life-insurance/manage'
     | '/life-insurance/new'
+    | '/modules/$module'
     | '/life-insurance/'
   fileRoutesById: FileRoutesById
 }
@@ -170,6 +182,7 @@ export interface RootRouteChildren {
   LifeInsuranceImportRoute: typeof LifeInsuranceImportRoute
   LifeInsuranceManageRoute: typeof LifeInsuranceManageRoute
   LifeInsuranceNewRoute: typeof LifeInsuranceNewRoute
+  ModulesModuleRoute: typeof ModulesModuleRoute
   LifeInsuranceIndexRoute: typeof LifeInsuranceIndexRoute
 }
 
@@ -252,6 +265,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LifeInsuranceNewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/modules/$module': {
+      id: '/modules/$module'
+      path: '/modules/$module'
+      fullPath: '/modules/$module'
+      preLoaderRoute: typeof ModulesModuleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -266,6 +286,7 @@ const rootRouteChildren: RootRouteChildren = {
   LifeInsuranceImportRoute: LifeInsuranceImportRoute,
   LifeInsuranceManageRoute: LifeInsuranceManageRoute,
   LifeInsuranceNewRoute: LifeInsuranceNewRoute,
+  ModulesModuleRoute: ModulesModuleRoute,
   LifeInsuranceIndexRoute: LifeInsuranceIndexRoute,
 }
 export const routeTree = rootRouteImport

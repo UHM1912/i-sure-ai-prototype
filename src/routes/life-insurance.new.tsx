@@ -3,6 +3,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { Sparkles } from "lucide-react";
 import { PageHeader } from "@/components/common/PageHeader";
+import { LifeTabs } from "@/components/common/LifeTabs";
 import { Button } from "@/components/ui/button";
 import { useAI } from "@/lib/ai-engine";
 import { cn } from "@/lib/utils";
@@ -70,11 +71,15 @@ function NewDataEntry() {
   return (
     <div className="mx-auto max-w-3xl">
       <PageHeader title="New Data Entry" description="Create a new life insurance policy record." />
+      <LifeTabs />
 
       {formFocus && (
-        <div className="mb-4 flex items-center gap-2 rounded-lg border border-primary/30 bg-primary-soft px-4 py-2.5 text-sm text-accent-foreground">
-          <Sparkles className="size-4 text-primary" />
-          AI guidance active — start with the highlighted Customer Name field.
+        <div className="mb-4 flex items-start gap-2.5 rounded-md border border-border border-l-2 border-l-primary bg-card px-4 py-2.5">
+          <Sparkles className="mt-0.5 size-4 text-primary" />
+          <div>
+            <p className="text-sm font-medium">AI Guidance</p>
+            <p className="text-xs text-muted-foreground">AI is guiding you through this step — start with Customer Name.</p>
+          </div>
         </div>
       )}
 

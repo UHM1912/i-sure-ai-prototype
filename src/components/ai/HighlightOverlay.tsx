@@ -15,7 +15,6 @@ export function HighlightOverlay() {
     }
     let frame = 0;
     let cancelled = false;
-
     const track = () => {
       if (cancelled) return;
       const el = document.querySelector(`[data-action="${highlight.key}"]`);
@@ -25,7 +24,6 @@ export function HighlightOverlay() {
       }
       frame = requestAnimationFrame(track);
     };
-
     const el = document.querySelector(`[data-action="${highlight.key}"]`);
     el?.scrollIntoView({ behavior: "smooth", block: "center" });
     frame = requestAnimationFrame(track);
@@ -36,37 +34,39 @@ export function HighlightOverlay() {
   }, [highlight]);
 
   if (!highlight || !rect) return null;
+  const vision = highlight.method === "VISION";
 
   return (
     <div className="pointer-events-none fixed inset-0 z-50">
       <div
-        className="ai-pulse-ring absolute rounded-xl transition-all duration-300"
-        style={{
-          top: rect.top - 6,
-          left: rect.left - 6,
-          width: rect.width + 12,
-          height: rect.height + 12,
-        }}
+        className="ai-pulse-ring absolute rounded-md transition-all duration-300"
+        style={{ top: rect.top - 4, left: rect.left - 4, width: rect.width + 8, height: rect.height + 8 }}
       >
-        {highlight.method === "VISION" && (
-          <div className="absolute inset-0 overflow-hidden rounded-xl">
-            <div className="ai-scanline h-1/4 w-full bg-warning/30" />
+        {vision && (
+          <div className="absolute inset-0 overflow-hidden rounded-md">
+            <div className="ai-scanline h-1/4 w-full bg-warning/20" />
           </div>
         )}
       </div>
+      <MousePointer2
+        className="absolute size-4 fill-primary text-card transition-all duration-500"
+        style={{ top: rect.top + rect.height / 2, left: rect.left + Math.min(rect.width - 12, 40) }}
+      />
       <div
-        className="absolute flex items-center gap-2 transition-all duration-300"
-        style={{ top: rect.top + rect.height + 12, left: rect.left }}
+        className="absolute flex max-w-xs items-start gap-2 rounded-md border border-border bg-card px-3 py-2 shadow-panel transition-all duration-300"
+        style={{ top: rect.top + rect.height + 10, left: rect.left }}
       >
-        <MousePointer2 className="size-5 fill-primary text-primary drop-shadow" />
-        <span className="flex items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground shadow-panel">
-          {highlight.method === "VISION" ? (
-            <ScanSearch className="size-3.5" />
-          ) : (
-            <Sparkles className="size-3.5" />
-          )}
-          AI is guiding you · {highlight.label}
-        </span>
+        {vision ? (
+          <ScanSearch className="mt-0.5 size-3.5 shrink-0 text-warning" />
+        ) : (
+          <Sparkles className="mt-0.5 size-3.5 shrink-0 text-primary" />
+        )}
+        <div>
+          <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+            {vision ? "Found with visual recognition" : "AI Guidance"}
+          </p>
+          <p className="text-xs text-foreground">{highlight.label}</p>
+        </div>
       </div>
     </div>
   );
