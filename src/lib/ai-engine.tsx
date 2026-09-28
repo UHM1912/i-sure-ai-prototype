@@ -273,7 +273,10 @@ export function AIProvider({ children }: { children: ReactNode }) {
   const confirmResolver = useRef<((v: boolean) => void) | null>(null);
 
   const log = useCallback((label: string, value: string, tone?: LogEntry["tone"]) => {
-    setLogs((l) => [{ time: stamp(), label, value, tone }, ...l].slice(0, 120));
+    const entry: LogEntry = tone
+      ? { time: stamp(), label, value, tone }
+      : { time: stamp(), label, value };
+    setLogs((l) => [entry, ...l].slice(0, 120));
   }, []);
 
   const pushMessage = useCallback((m: Omit<ChatMessage, "id">) => {
