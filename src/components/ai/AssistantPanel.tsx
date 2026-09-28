@@ -75,7 +75,7 @@ export function AssistantPanel() {
       <button
         onClick={() => setOpen(true)}
         data-action="ask-ai"
-        className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-panel transition-all hover:bg-[#1e40af] hover:shadow-lg"
+        className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-panel transition-all hover:bg-[#d9231b] hover:shadow-lg"
       >
         <Sparkles className="size-4" />
         Ask i-Sure AI
