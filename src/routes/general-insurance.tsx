@@ -15,7 +15,7 @@ export const Route = createFileRoute("/general-insurance")({
   component: GeneralInsurance,
 });
 
-const ICONS = [Car, HeartPulse, Home, Plane];
+const ICONS = [Car, HeartPulse, Home, Plane] as const;
 
 function GeneralInsurance() {
   return (

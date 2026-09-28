@@ -315,25 +315,27 @@ export function AIProvider({ children }: { children: ReactNode }) {
       log("Intent", intent.intent);
       log("Module", intent.module);
 
-      const flow: ActionStep[] = [
+      let flow: ActionStep[] = [
         { label: "Understanding request", state: "active" },
         { label: `Identifying module: ${intent.module.replace("_", " ")}`, state: "pending" },
         { label: useVision ? "DOM element search" : "Finding target element", state: "pending" },
         { label: "Executing action", state: "pending" },
         { label: "Completed", state: "pending" },
       ];
+      const setStep = (index: number, state: StepState) => {
+        flow = flow.map((s, i) => (i === index ? { ...s, state } : s));
+        updateSteps(flow);
+      };
       updateSteps(flow);
       await sleep(700);
 
-      flow[0].state = "done";
-      flow[1].state = "active";
-      updateSteps([...flow]);
+      setStep(0, "done");
+      setStep(1, "active");
       setDomTrace([{ stage: "User intent", done: true }]);
       await sleep(600);
 
-      flow[1].state = "done";
-      flow[2].state = "active";
-      updateSteps([...flow]);
+      setStep(1, "done");
+      setStep(2, "active");
       setDomTrace((t) => [...t, { stage: "Page understanding", done: true }]);
       await sleep(500);
       setDomTrace((t) => [...t, { stage: "DOM element matching", done: !useVision }]);
@@ -341,8 +343,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
 
       if (useVision) {
         setStatus("vision");
-        flow[2].state = "fail";
-        updateSteps([...flow]);
+        setStep(2, "fail");
         pushMessage({
           role: "ai",
           text: "I couldn't identify the target from the page structure. Switching to vision analysis.",
@@ -359,17 +360,15 @@ export function AIProvider({ children }: { children: ReactNode }) {
       }
 
       setDomTrace((t) => [...t, { stage: "Target identified", done: true }]);
-      flow[2].state = "done";
-      flow[3].state = "active";
-      updateSteps([...flow]);
+      setStep(2, "done");
+      setStep(3, "active");
       setStatus("acting");
       log("Target", intent.target);
 
       if (intent.critical) {
         const allowed = await askConfirm(intent, intent.targetLabel);
         if (!allowed) {
-          flow[3].state = "fail";
-          updateSteps([...flow]);
+          setStep(3, "fail");
           setStatus("error");
           setThinking(false);
           log("Action", "CANCELLED BY USER", "fail");
@@ -385,13 +384,11 @@ export function AIProvider({ children }: { children: ReactNode }) {
       await sleep(650);
 
       setHighlight({ key: intent.targetKey, label: intent.targetLabel, method: useVision ? "VISION" : "DOM" });
-      flow[3].state = "done";
-      flow[4].state = "active";
-      updateSteps([...flow]);
+      setStep(3, "done");
+      setStep(4, "active");
       await sleep(600);
 
-      flow[4].state = "done";
-      updateSteps([...flow]);
+      setStep(4, "done");
       setStatus("complete");
       setThinking(false);
       log("Status", "SUCCESS", "ok");
