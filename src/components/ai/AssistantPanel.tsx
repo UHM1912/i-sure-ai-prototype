@@ -1,16 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  Bot,
-  CheckCircle2,
-  CircleAlert,
-  Loader2,
-  Mic,
-  ScanSearch,
-  Send,
-  Sparkles,
-  Volume2,
-  X,
-} from "lucide-react";
+import { Bot, CircleCheck as CheckCircle2, CircleAlert, Loader as Loader2, Mic, ScanSearch, Send, Sparkles, Volume2, X } from "lucide-react";
 import { useAI, type ActionStep } from "@/lib/ai-engine";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -86,7 +75,7 @@ export function AssistantPanel() {
       <button
         onClick={() => setOpen(true)}
         data-action="ask-ai"
-        className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-panel transition-opacity hover:opacity-90"
+        className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-panel transition-all hover:bg-[#1e40af] hover:shadow-lg"
       >
         <Sparkles className="size-4" />
         Ask i-Sure AI

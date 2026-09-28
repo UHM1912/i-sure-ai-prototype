@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Play, Loader2 } from "lucide-react";
+import { Play, Loader as Loader2, Sparkles } from "lucide-react";
 import { SCENARIOS, useAI, type ScenarioKey } from "@/lib/ai-engine";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -13,7 +13,8 @@ export function DemoMenu() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button size="sm" data-action="demo-mode">
+        <Button size="sm" variant="outline" data-action="demo-mode" className="bg-ai-soft border-ai-label/20 text-ai-label hover:bg-ai-soft/70 hover:text-ai-label">
+          <Sparkles className="size-3.5" />
           Try AI Demo
         </Button>
       </PopoverTrigger>

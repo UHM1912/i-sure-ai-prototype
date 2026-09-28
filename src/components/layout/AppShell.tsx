@@ -1,26 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import {
-  Activity,
-  BarChart3,
-  FileText,
-  HandCoins,
-  RefreshCw,
-  ClipboardList,
-  Users,
-  Bell,
-  Bot,
-  Briefcase,
-  ChevronLeft,
-  Home,
-  Layers,
-  LifeBuoy,
-  Search,
-  Settings,
-  Shield,
-  Sparkles,
-  TrendingUp,
-} from "lucide-react";
+import { Activity, ChartBar as BarChart3, FileText, HandCoins, RefreshCw, ClipboardList, Users, Bell, Bot, Briefcase, ChevronLeft, Hop as Home, Layers, LifeBuoy, Search, Settings, Shield, Sparkles, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AssistantPanel } from "@/components/ai/AssistantPanel";
 import { HighlightOverlay } from "@/components/ai/HighlightOverlay";
@@ -28,18 +8,21 @@ import { StatusPill } from "@/components/ai/StatusPill";
 import { DemoMenu } from "@/components/ai/DemoMenu";
 import { useAI } from "@/lib/ai-engine";
 
-const NAV = [
+const PRIMARY_NAV = [
   { to: "/", label: "Dashboard", icon: Home, key: "nav-home" },
-  { to: "/modules/clients", label: "Clients", icon: Users, key: "nav-clients" },
   { to: "/life-insurance", label: "Life Insurance", icon: LifeBuoy, key: "nav-life-insurance" },
   { to: "/general-insurance", label: "General Insurance", icon: Shield, key: "nav-general-insurance" },
   { to: "/investments", label: "Investments", icon: TrendingUp, key: "nav-investments" },
+  { to: "/common", label: "Common", icon: Layers, key: "nav-common" },
+] as const;
+
+const MODULE_NAV = [
+  { to: "/modules/clients", label: "Clients", icon: Users, key: "nav-clients" },
   { to: "/modules/policies", label: "Policies", icon: FileText, key: "nav-policies" },
   { to: "/modules/claims", label: "Claims", icon: ClipboardList, key: "nav-claims" },
   { to: "/modules/renewals", label: "Renewals", icon: RefreshCw, key: "nav-renewals" },
   { to: "/modules/commissions", label: "Commissions", icon: HandCoins, key: "nav-commissions" },
   { to: "/modules/analytics", label: "Analytics", icon: BarChart3, key: "nav-analytics" },
-  { to: "/common", label: "Common", icon: Layers, key: "nav-common" },
 ] as const;
 
 const AI_NAV = [
@@ -74,6 +57,7 @@ function NavItem({
   dataKey,
   collapsed,
   active,
+  muted,
 }: {
   to: string;
   label: string;
@@ -81,6 +65,7 @@ function NavItem({
   dataKey: string;
   collapsed: boolean;
   active: boolean;
+  muted?: boolean;
 }) {
   return (
     <Link
@@ -91,6 +76,7 @@ function NavItem({
         active
           ? "border-l-sidebar-primary bg-sidebar-accent font-medium text-sidebar-accent-foreground"
           : "border-l-transparent text-sidebar-foreground hover:bg-muted hover:text-foreground",
+        muted && !active && "text-sidebar-foreground/55",
       )}
     >
       <Icon className="size-4 shrink-0" />
@@ -114,7 +100,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         )}
       >
         <div className="flex items-center gap-2.5 px-4 py-5">
-          <div className="grid size-8 shrink-0 place-items-center rounded-md bg-sidebar-primary text-sm font-bold text-sidebar-primary-foreground">
+          <div className="grid size-8 shrink-0 place-items-center rounded-lg bg-sidebar-primary text-sm font-bold text-sidebar-primary-foreground shadow-sm">
             i
           </div>
           {!collapsed && (
@@ -128,7 +114,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         </div>
 
         <nav className="flex-1 space-y-0.5 overflow-y-auto px-3">
-          {NAV.map((n) => (
+          {PRIMARY_NAV.map((n) => (
             <NavItem
               key={n.to}
               to={n.to}
@@ -140,23 +126,15 @@ export function AppShell({ children }: { children: ReactNode }) {
             />
           ))}
 
-          <p
-            className={cn(
-              "px-3 pb-1 pt-5 text-[11px] font-semibold uppercase tracking-wider text-sidebar-foreground/50",
-              collapsed && "text-center",
+          <div className="flex items-center gap-2 px-3 pb-1 pt-5">
+            {!collapsed && (
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-sidebar-foreground/45">
+                Modules
+              </span>
             )}
-          >
-            {collapsed ? "AI" : "i-Sure AI"}
-          </p>
-          <button
-            data-action="nav-ai-assistant"
-            onClick={() => setOpen(true)}
-            className="flex w-full items-center gap-3 rounded-md border-l-2 border-l-transparent px-3 py-1.5 text-sm text-sidebar-foreground transition-colors hover:bg-muted hover:text-foreground"
-          >
-            <Sparkles className="size-4 shrink-0" />
-            {!collapsed && <span>AI Assistant</span>}
-          </button>
-          {AI_NAV.map((n) => (
+            {collapsed && <span className="mx-auto h-px w-6 bg-sidebar-border" />}
+          </div>
+          {MODULE_NAV.map((n) => (
             <NavItem
               key={n.to}
               to={n.to}
@@ -165,8 +143,41 @@ export function AppShell({ children }: { children: ReactNode }) {
               dataKey={n.key}
               collapsed={collapsed}
               active={path === n.to}
+              muted
             />
           ))}
+
+          <div className="my-3 border-t border-sidebar-border" />
+
+          <div className={cn("rounded-lg bg-ai-soft", collapsed ? "mx-0.5 py-1" : "mx-0.5 py-2")}>
+            <div className="flex items-center gap-2 px-3 pb-1 pt-1">
+              {!collapsed && (
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-ai-label">
+                  i-Sure AI
+                </span>
+              )}
+              {collapsed && <span className="mx-auto h-px w-6 bg-sidebar-border" />}
+            </div>
+            <button
+              data-action="nav-ai-assistant"
+              onClick={() => setOpen(true)}
+              className="flex w-full items-center gap-3 rounded-md border-l-2 border-l-transparent px-3 py-1.5 text-sm text-sidebar-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              <Sparkles className="size-4 shrink-0 text-ai-label" />
+              {!collapsed && <span>AI Assistant</span>}
+            </button>
+            {AI_NAV.map((n) => (
+              <NavItem
+                key={n.to}
+                to={n.to}
+                label={n.label}
+                icon={n.icon}
+                dataKey={n.key}
+                collapsed={collapsed}
+                active={path === n.to}
+              />
+            ))}
+          </div>
         </nav>
 
         <div className="space-y-1 border-t border-sidebar-border p-3">
@@ -218,7 +229,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         </header>
 
         <nav className="flex gap-1 overflow-x-auto border-b border-border bg-card px-4 py-2 md:hidden">
-          {[...NAV, ...AI_NAV].map((n) => (
+          {[...PRIMARY_NAV, ...MODULE_NAV, ...AI_NAV].map((n) => (
             <Link
               key={n.to}
               to={String(n.to)}

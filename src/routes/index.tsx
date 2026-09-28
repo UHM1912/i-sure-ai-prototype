@@ -53,34 +53,34 @@ function Dashboard() {
         title="Dashboard"
         description="Overview of your clients, policies, renewals and claims."
         actions={
-          <Button variant="outline" data-action="ask-ai-dashboard" onClick={() => submit("Show me what I need to do next")}>
+          <Button variant="outline" size="sm" data-action="ask-ai-dashboard" onClick={() => submit("Show me what I need to do next")}>
             <Sparkles className="size-4" /> Ask AI what's next
           </Button>
         }
       />
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         {STATS.map((s) => (
           <div
             key={s.label}
-            className="rounded-lg border border-border bg-card p-5 shadow-card transition-shadow hover:shadow-card"
+            className="rounded-lg border border-border bg-card p-4 shadow-card"
           >
             <div className="flex items-center justify-between">
-              <p className="text-sm text-muted-foreground">{s.label}</p>
-              <s.icon className="size-4 text-primary" />
+              <p className="text-xs font-medium text-muted-foreground">{s.label}</p>
+              <s.icon className="size-3.5 text-primary" />
             </div>
-            <p className="mt-3 text-2xl font-semibold">{s.value}</p>
-            <p className="mt-1 text-xs text-muted-foreground">{s.delta}</p>
+            <p className="mt-2 text-xl font-semibold tracking-tight">{s.value}</p>
+            <p className="mt-0.5 text-xs text-muted-foreground">{s.delta}</p>
           </div>
         ))}
       </div>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-3">
-        <section className="rounded-lg border border-border bg-card p-5 shadow-card lg:col-span-2">
+      <div className="mt-5 grid gap-4 lg:grid-cols-3">
+        <section className="rounded-lg border border-border bg-card p-4 shadow-card lg:col-span-2">
           <h2 className="text-sm font-semibold">Recent Activity</h2>
-          <ul className="mt-4 divide-y divide-border">
+          <ul className="mt-2 divide-y divide-border">
             {recentActivity.map((a) => (
-              <li key={a.title} className="flex items-center justify-between gap-4 py-3">
+              <li key={a.title} className="flex items-center justify-between gap-4 py-2.5">
                 <div>
                   <p className="text-sm font-medium">{a.title}</p>
                   <p className="text-xs text-muted-foreground">{a.detail}</p>
@@ -91,7 +91,7 @@ function Dashboard() {
           </ul>
         </section>
 
-        <section className="rounded-lg border border-border bg-card p-5 shadow-card">
+        <section className="rounded-lg border border-border bg-card p-4 shadow-card">
           <div className="flex items-center gap-2 text-primary">
             <Sparkles className="size-4" />
             <h2 className="text-sm font-semibold">AI Insights</h2>
@@ -99,12 +99,12 @@ function Dashboard() {
           <p className="mt-1 text-xs text-accent-foreground">
             3 actions can be completed automatically.
           </p>
-          <div className="mt-4 space-y-2">
+          <div className="mt-3 space-y-2">
             {INSIGHTS.map((i) => (
               <button
                 key={i.title}
                 onClick={() => submit(i.prompt)}
-                className="block w-full rounded-lg border border-border bg-card px-3 py-2.5 text-left transition-shadow hover:shadow-card"
+                className="block w-full rounded-lg border border-border bg-card px-3 py-2 text-left transition-shadow hover:shadow-card"
               >
                 <p className="text-sm font-medium">{i.title}</p>
                 <p className="text-xs text-muted-foreground">{i.detail}</p>
@@ -114,7 +114,7 @@ function Dashboard() {
         </section>
       </div>
 
-      <div className="mt-6 grid gap-4 md:grid-cols-3">
+      <div className="mt-5 grid gap-3 md:grid-cols-3">
         {[
           { to: "/life-insurance", title: "Life Insurance", copy: "Import, manage and create life policy records." },
           { to: "/general-insurance", title: "General Insurance", copy: "Motor, health, property and travel portfolios." },
@@ -123,7 +123,7 @@ function Dashboard() {
           <Link
             key={c.to}
             to={c.to}
-            className="group rounded-lg border border-border bg-card p-5 shadow-card transition-all hover:shadow-card"
+            className="group rounded-lg border border-border bg-card p-4 shadow-card transition-all hover:shadow-card"
           >
             <p className="flex items-center justify-between text-sm font-semibold">
               {c.title}
