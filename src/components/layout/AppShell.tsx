@@ -221,7 +221,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           {[...NAV, ...AI_NAV].map((n) => (
             <Link
               key={n.to}
-              to={n.to}
+              to={String(n.to)}
               className={cn(
                 "shrink-0 rounded-md px-3 py-1.5 text-xs",
                 path === n.to ? "bg-primary-soft font-medium text-primary" : "text-muted-foreground",
