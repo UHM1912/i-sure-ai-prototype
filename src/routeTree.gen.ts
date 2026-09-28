@@ -10,33 +10,167 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ActivityRouteImport } from './routes/activity'
+import { Route as AiAutomationRouteImport } from './routes/ai-automation'
+import { Route as CommonRouteImport } from './routes/common'
+import { Route as GeneralInsuranceRouteImport } from './routes/general-insurance'
+import { Route as InvestmentsRouteImport } from './routes/investments'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as LifeInsuranceIndexRouteImport } from './routes/life-insurance.index'
+import { Route as LifeInsuranceImportRouteImport } from './routes/life-insurance.import'
+import { Route as LifeInsuranceManageRouteImport } from './routes/life-insurance.manage'
+import { Route as LifeInsuranceNewRouteImport } from './routes/life-insurance.new'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ActivityRoute = ActivityRouteImport.update({
+  id: '/activity',
+  path: '/activity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiAutomationRoute = AiAutomationRouteImport.update({
+  id: '/ai-automation',
+  path: '/ai-automation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommonRoute = CommonRouteImport.update({
+  id: '/common',
+  path: '/common',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GeneralInsuranceRoute = GeneralInsuranceRouteImport.update({
+  id: '/general-insurance',
+  path: '/general-insurance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestmentsRoute = InvestmentsRouteImport.update({
+  id: '/investments',
+  path: '/investments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LifeInsuranceIndexRoute = LifeInsuranceIndexRouteImport.update({
+  id: '/life-insurance/',
+  path: '/life-insurance/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LifeInsuranceImportRoute = LifeInsuranceImportRouteImport.update({
+  id: '/life-insurance/import',
+  path: '/life-insurance/import',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LifeInsuranceManageRoute = LifeInsuranceManageRouteImport.update({
+  id: '/life-insurance/manage',
+  path: '/life-insurance/manage',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LifeInsuranceNewRoute = LifeInsuranceNewRouteImport.update({
+  id: '/life-insurance/new',
+  path: '/life-insurance/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
+  '/ai-automation': typeof AiAutomationRoute
+  '/common': typeof CommonRoute
+  '/general-insurance': typeof GeneralInsuranceRoute
+  '/investments': typeof InvestmentsRoute
+  '/settings': typeof SettingsRoute
+  '/life-insurance/import': typeof LifeInsuranceImportRoute
+  '/life-insurance/manage': typeof LifeInsuranceManageRoute
+  '/life-insurance/new': typeof LifeInsuranceNewRoute
+  '/life-insurance/': typeof LifeInsuranceIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
+  '/ai-automation': typeof AiAutomationRoute
+  '/common': typeof CommonRoute
+  '/general-insurance': typeof GeneralInsuranceRoute
+  '/investments': typeof InvestmentsRoute
+  '/settings': typeof SettingsRoute
+  '/life-insurance/import': typeof LifeInsuranceImportRoute
+  '/life-insurance/manage': typeof LifeInsuranceManageRoute
+  '/life-insurance/new': typeof LifeInsuranceNewRoute
+  '/life-insurance': typeof LifeInsuranceIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
+  '/ai-automation': typeof AiAutomationRoute
+  '/common': typeof CommonRoute
+  '/general-insurance': typeof GeneralInsuranceRoute
+  '/investments': typeof InvestmentsRoute
+  '/settings': typeof SettingsRoute
+  '/life-insurance/import': typeof LifeInsuranceImportRoute
+  '/life-insurance/manage': typeof LifeInsuranceManageRoute
+  '/life-insurance/new': typeof LifeInsuranceNewRoute
+  '/life-insurance/': typeof LifeInsuranceIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/activity'
+    | '/ai-automation'
+    | '/common'
+    | '/general-insurance'
+    | '/investments'
+    | '/settings'
+    | '/life-insurance/import'
+    | '/life-insurance/manage'
+    | '/life-insurance/new'
+    | '/life-insurance/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/activity'
+    | '/ai-automation'
+    | '/common'
+    | '/general-insurance'
+    | '/investments'
+    | '/settings'
+    | '/life-insurance/import'
+    | '/life-insurance/manage'
+    | '/life-insurance/new'
+    | '/life-insurance'
+  id:
+    | '__root__'
+    | '/'
+    | '/activity'
+    | '/ai-automation'
+    | '/common'
+    | '/general-insurance'
+    | '/investments'
+    | '/settings'
+    | '/life-insurance/import'
+    | '/life-insurance/manage'
+    | '/life-insurance/new'
+    | '/life-insurance/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActivityRoute: typeof ActivityRoute
+  AiAutomationRoute: typeof AiAutomationRoute
+  CommonRoute: typeof CommonRoute
+  GeneralInsuranceRoute: typeof GeneralInsuranceRoute
+  InvestmentsRoute: typeof InvestmentsRoute
+  SettingsRoute: typeof SettingsRoute
+  LifeInsuranceImportRoute: typeof LifeInsuranceImportRoute
+  LifeInsuranceManageRoute: typeof LifeInsuranceManageRoute
+  LifeInsuranceNewRoute: typeof LifeInsuranceNewRoute
+  LifeInsuranceIndexRoute: typeof LifeInsuranceIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +182,91 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/activity': {
+      id: '/activity'
+      path: '/activity'
+      fullPath: '/activity'
+      preLoaderRoute: typeof ActivityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-automation': {
+      id: '/ai-automation'
+      path: '/ai-automation'
+      fullPath: '/ai-automation'
+      preLoaderRoute: typeof AiAutomationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/common': {
+      id: '/common'
+      path: '/common'
+      fullPath: '/common'
+      preLoaderRoute: typeof CommonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/general-insurance': {
+      id: '/general-insurance'
+      path: '/general-insurance'
+      fullPath: '/general-insurance'
+      preLoaderRoute: typeof GeneralInsuranceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investments': {
+      id: '/investments'
+      path: '/investments'
+      fullPath: '/investments'
+      preLoaderRoute: typeof InvestmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/life-insurance/': {
+      id: '/life-insurance/'
+      path: '/life-insurance'
+      fullPath: '/life-insurance/'
+      preLoaderRoute: typeof LifeInsuranceIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/life-insurance/import': {
+      id: '/life-insurance/import'
+      path: '/life-insurance/import'
+      fullPath: '/life-insurance/import'
+      preLoaderRoute: typeof LifeInsuranceImportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/life-insurance/manage': {
+      id: '/life-insurance/manage'
+      path: '/life-insurance/manage'
+      fullPath: '/life-insurance/manage'
+      preLoaderRoute: typeof LifeInsuranceManageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/life-insurance/new': {
+      id: '/life-insurance/new'
+      path: '/life-insurance/new'
+      fullPath: '/life-insurance/new'
+      preLoaderRoute: typeof LifeInsuranceNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActivityRoute: ActivityRoute,
+  AiAutomationRoute: AiAutomationRoute,
+  CommonRoute: CommonRoute,
+  GeneralInsuranceRoute: GeneralInsuranceRoute,
+  InvestmentsRoute: InvestmentsRoute,
+  SettingsRoute: SettingsRoute,
+  LifeInsuranceImportRoute: LifeInsuranceImportRoute,
+  LifeInsuranceManageRoute: LifeInsuranceManageRoute,
+  LifeInsuranceNewRoute: LifeInsuranceNewRoute,
+  LifeInsuranceIndexRoute: LifeInsuranceIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
