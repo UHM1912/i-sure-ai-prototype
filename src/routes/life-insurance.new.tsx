@@ -16,7 +16,7 @@ export const Route = createFileRoute("/life-insurance/new")({
       { property: "og:description", content: "Guided form for creating a new life insurance policy record." },
     ],
   }),
-  component: NewDataEntry;
+  component: NewDataEntry,
 });
 
 function NewDataEntry() {
