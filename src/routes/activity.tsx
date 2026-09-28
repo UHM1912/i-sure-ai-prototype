@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/activity")({
   head: () => ({
     meta: [
-      { title: "Activity & History · Aegis Insure" },
+      { title: "Activity & History · i-Sure" },
       { name: "description", content: "Execution trace of every AI request: intent, module, target, action and outcome." },
-      { property: "og:title", content: "Activity & History · Aegis Insure" },
+      { property: "og:title", content: "Activity & History · i-Sure" },
       { property: "og:description", content: "Full AI execution trace for auditability in the insurance workspace." },
     ],
   }),
@@ -25,7 +25,7 @@ function ActivityLog() {
         description="Execution trace of AI requests, decisions and actions in this session."
       />
 
-      <div className="overflow-hidden rounded-xl border border-border bg-card shadow-card">
+      <div className="overflow-hidden rounded-lg border border-border bg-card shadow-card">
         {logs.length === 0 ? (
           <p className="px-5 py-12 text-center text-sm text-muted-foreground">
             No AI activity yet. Run a demo scenario or ask the assistant something.

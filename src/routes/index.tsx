@@ -15,13 +15,13 @@ import { useAI } from "@/lib/ai-engine";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Insurance Operations · Aegis Insure" },
+      { title: "Insurance Operations · i-Sure" },
       {
         name: "description",
         content:
           "Manage insurance data and workflows from one workspace, with an AI layer that navigates and automates the application.",
       },
-      { property: "og:title", content: "Insurance Operations · Aegis Insure" },
+      { property: "og:title", content: "Insurance Operations · i-Sure" },
       {
         property: "og:description",
         content: "Policies, customers and pending actions in one AI-assisted insurance workspace.",
@@ -63,7 +63,7 @@ function Dashboard() {
         {STATS.map((s) => (
           <div
             key={s.label}
-            className="rounded-xl border border-border bg-card p-5 shadow-card transition-shadow hover:shadow-panel"
+            className="rounded-lg border border-border bg-card p-5 shadow-card transition-shadow hover:shadow-card"
           >
             <div className="flex items-center justify-between">
               <p className="text-sm text-muted-foreground">{s.label}</p>
@@ -76,7 +76,7 @@ function Dashboard() {
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-3">
-        <section className="rounded-xl border border-border bg-card p-5 shadow-card lg:col-span-2">
+        <section className="rounded-lg border border-border bg-card p-5 shadow-card lg:col-span-2">
           <h2 className="text-sm font-semibold">Recent Activity</h2>
           <ul className="mt-4 divide-y divide-border">
             {recentActivity.map((a) => (
@@ -91,7 +91,7 @@ function Dashboard() {
           </ul>
         </section>
 
-        <section className="rounded-xl border border-primary/25 bg-primary-soft p-5">
+        <section className="rounded-lg border border-primary/25 bg-primary-soft p-5">
           <div className="flex items-center gap-2 text-primary">
             <Sparkles className="size-4" />
             <h2 className="text-sm font-semibold">AI Insights</h2>
@@ -123,7 +123,7 @@ function Dashboard() {
           <Link
             key={c.to}
             to={c.to}
-            className="group rounded-xl border border-border bg-card p-5 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-panel"
+            className="group rounded-lg border border-border bg-card p-5 shadow-card transition-all hover:shadow-card"
           >
             <p className="flex items-center justify-between text-sm font-semibold">
               {c.title}

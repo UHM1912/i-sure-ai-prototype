@@ -102,7 +102,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           {!collapsed && (
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold text-sidebar-accent-foreground">
-                Aegis Insure
+                i-Sure
               </p>
               <p className="truncate text-[11px] text-sidebar-foreground/70">Operations Platform</p>
             </div>

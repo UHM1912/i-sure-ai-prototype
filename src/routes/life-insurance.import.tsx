@@ -46,7 +46,7 @@ function ImportData() {
         }
       />
 
-      <div className="rounded-xl border-2 border-dashed border-border bg-card p-10 text-center transition-colors hover:border-primary/40">
+      <div className="rounded-lg border-2 border-dashed border-border bg-card p-10 text-center transition-colors hover:border-primary/40">
         <UploadCloud className="mx-auto size-8 text-primary" />
         <p className="mt-3 text-sm font-medium">Drag &amp; drop your file here</p>
         <p className="mt-1 text-xs text-muted-foreground">Supported formats: CSV, Excel, JSON</p>
@@ -56,7 +56,7 @@ function ImportData() {
       </div>
 
       {stage >= 0 && (
-        <div className="mt-4 rounded-xl border border-border bg-card p-5 shadow-card">
+        <div className="mt-4 rounded-lg border border-border bg-card p-5 shadow-card">
           <p className="text-sm font-semibold">life_policy_data.xlsx</p>
           <div className="mt-4 space-y-2">
             {STAGES.map((s, i) => (
@@ -75,7 +75,7 @@ function ImportData() {
         </div>
       )}
 
-      <section className="mt-6 overflow-hidden rounded-xl border border-border bg-card shadow-card">
+      <section className="mt-6 overflow-hidden rounded-lg border border-border bg-card shadow-card">
         <h2 className="border-b border-border px-5 py-3 text-sm font-semibold">Recent imports</h2>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">

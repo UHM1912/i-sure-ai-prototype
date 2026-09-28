@@ -5,9 +5,9 @@ import { PageHeader } from "@/components/common/PageHeader";
 export const Route = createFileRoute("/common")({
   head: () => ({
     meta: [
-      { title: "Common · Aegis Insure" },
+      { title: "Common · i-Sure" },
       { name: "description", content: "Shared masters used across insurance modules: customers, branches, document templates and compliance." },
-      { property: "og:title", content: "Common · Aegis Insure" },
+      { property: "og:title", content: "Common · i-Sure" },
       { property: "og:description", content: "Shared masters and reference data across all insurance modules." },
     ],
   }),
@@ -29,7 +29,7 @@ function Common() {
         {ITEMS.map((i) => (
           <div
             key={i.title}
-            className="rounded-xl border border-border bg-card p-5 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-panel"
+            className="rounded-lg border border-border bg-card p-5 shadow-card transition-all hover:shadow-card"
           >
             <div className="grid size-9 place-items-center rounded-lg bg-primary-soft text-primary">
               <i.icon className="size-4" />

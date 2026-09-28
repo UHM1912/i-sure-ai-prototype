@@ -79,7 +79,7 @@ function NewDataEntry() {
       )}
 
       <form
-        className="rounded-xl border border-border bg-card p-6 shadow-card"
+        className="rounded-lg border border-border bg-card p-6 shadow-card"
         onSubmit={(e) => {
           e.preventDefault();
           toast.success("Record saved", { description: `${form.policy} is ready for review.` });
